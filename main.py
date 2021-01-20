@@ -61,6 +61,12 @@ def addNote():
   notes.append(newNote)
   return redirect('/')
 
+@app.route('/delete/<noteid>')
+def delete(noteid):
+  noteid = int(noteid)
+  global notes
+  notes = list(filter(lambda x: x['id'] != noteid, notes))
+  return redirect('/')
 
 def getNewId():
   global notes
